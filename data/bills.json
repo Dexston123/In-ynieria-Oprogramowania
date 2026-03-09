@@ -1,0 +1,14 @@
+{
+    "bill1": {
+        "amount_pln": 350.50,
+        "due_date": "2024-05-10",
+        "bill_type": "electricity",
+        "apartment": "apt1"
+    },
+    "bill2": {
+        "amount_pln": 120.00,
+        "due_date": "2024-05-15",
+        "bill_type": "water",
+        "apartment": "apt2"
+    }
+}
