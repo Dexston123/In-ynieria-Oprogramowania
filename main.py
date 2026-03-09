@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from typing import Dict
+from typing import Dict, List
 
 import json
 
@@ -62,6 +62,22 @@ class Bill(BaseModel):
             data = json.load(file)
         assert isinstance(data, dict), "Expected a dictionary of bills"
         return {key: Bill(**bill) for key, bill in data.items()}
+
+class Transfer(BaseModel):
+    amount_pln: float
+    date: str
+    settlement_year: int | None
+    settlement_month: int | None
+    tenant: str
+
+    @staticmethod
+    def from_json_file(file_path: str) -> List['Transfer']:
+        data = None
+        with open(file_path, 'r') as file:
+            data = json.load(file)
+        assert isinstance(data, list), "Expected a list of transfers"
+        return [Transfer(**transfer) for transfer in data]
+    
 
 class Manager:
     def __init__(self, parameters: Parameters):
